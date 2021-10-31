@@ -1,20 +1,15 @@
-import {createContext, useState} from 'react'
+import {createContext} from 'react'
+import { useProducts } from '../hooks/useProducts'
 
-const BleeperContext = useContext()
+const BleeperContext = createContext()
 
 const BleeperProvider = (props) => {
-	const [loading, setLoading] = useState(false)
-	const [error, setError] = useState(false)
-
+	const {loading,error,products} = useProducts()
 	return (
-		<BleeperContext.Provider 
-			value={{
-				loading,
-				setLoading,
-				error,
-				setError
-			}}>
+		<BleeperContext.Provider value={{error,loading,products}}>
 		{props.children}
 		</BleeperContext.Provider>
 	)
 }
+
+export {BleeperProvider, BleeperContext}
