@@ -8,19 +8,18 @@ export function useProducts() {
   const [products, setProducts] = useState([])
 
   useEffect(()=>{
+    setLoading(true)
     setTimeout(()=>{
-      setLoading(true)
-    fetch(API_URL)
-    .then(data => data.json())
-    .then(response => setProducts(response))
-    .catch(()=> {
-      setLoading(false)
-      setError(true)
-    })
-    .finally(()=> setLoading(false))
-    
-    return function cleanup(){
-      unsuscribe()
+      fetch(API_URL())
+      .then(data => data.json())
+      .then(response => setProducts(response))
+      .catch(()=> {
+        setError(true)
+      })
+      .finally(()=> setLoading(false))
+      
+      return function cleanup(){
+        unsuscribe()
     }
     },3000)
     
