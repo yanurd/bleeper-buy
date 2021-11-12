@@ -1,1 +1,1 @@
-export const API_URL = 'http://localhost:4000/products'
+export const API_URL = (sort_by = 'asc') => `https://fakestoreapi.com/products?sort=${sort_by}`
