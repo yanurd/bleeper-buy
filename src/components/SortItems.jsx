@@ -16,7 +16,9 @@ const SortItems = () => {
   const openMenu = (menu) => setMenu(!menu)
   const showMenuOptions = () => {
     return (
-        <ul className="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-56 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm" tabIndex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-option-3">
+        <ul 
+        onMouseLeave={()=>openMenu(menu)}
+        className="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-56 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm" tabIndex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-option-3">
           {sortBy?.map(item => {
                     return (
                       <li 
