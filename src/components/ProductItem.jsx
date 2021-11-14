@@ -6,12 +6,12 @@ import {useContext} from 'react'
 import {BleeperContext} from '../context'
 
 const ProductItem = () =>{
-	const {searchedProducts} = useContext(BleeperContext)
+	const {currentItems} = useContext(BleeperContext)
 
 	return (
 		<div className="md:min-w-min md:max-w-4xl m-2 grid md:grid-cols-2 gap-5 lg:gap-2">
 			{
-				searchedProducts?.map(product => {
+			currentItems?.map(product => {
 					return (
 						<div 
 							key={product.id}
