@@ -6,6 +6,8 @@ const BleeperContext = createContext()
 const BleeperProvider = (props) => {
 	const {loading,error,products} = useProducts();
 	const [search, setSearch] = useState("");
+	const [currentPage, setCurrentPage] = useState(1)
+	const [itemPerPage] = useState(4)
 
 	let searchedProducts = [];
 
@@ -23,6 +25,12 @@ const BleeperProvider = (props) => {
 	const onSearchChange = (event) => {
 		setSearch(event.target.value)
 	}
+
+	//Pagination
+	const indexOfLastItem =  currentPage * itemPerPage
+	const indexOfFirstItem = indexOfLastItem - itemPerPage
+	const currentItems = searchedProducts.slice(indexOfFirstItem,indexOfLastItem)
+	const paginate = (number) => setCurrentPage(number)
 	return (
 		<BleeperContext.Provider 
 			value={{
@@ -31,6 +39,9 @@ const BleeperProvider = (props) => {
 				searchedProducts,
 				search,
 				onSearchChange,
+				paginate,
+				currentItems,
+				itemPerPage
 			}}>
 		{props.children}
 		</BleeperContext.Provider>
