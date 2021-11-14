@@ -3,6 +3,7 @@ import {BleeperContext} from '../context'
 import {ProductItem} from '../components/ProductItem'
 
 import {FilterMethods} from '../containers/FilterMethods'
+import {Pagination} from '../components/Pagination'
 import SideBar from './SideBar'
 const AppUi = () =>{
   const {loading, error} = useContext(BleeperContext)
@@ -17,6 +18,7 @@ const AppUi = () =>{
         error ? <h1 className="red-900">ERROR!</h1> : null
       }
       <ProductItem/>
+      <Pagination/>
     </>
   )
 }
